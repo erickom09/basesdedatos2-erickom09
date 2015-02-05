@@ -36,3 +36,4 @@ guardar_dance(VALOR,'omar');
 dbms_output.put_line(' se inserto con exito'||valor);
 end;
 /
+select * from dance;
