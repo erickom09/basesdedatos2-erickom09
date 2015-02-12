@@ -2,3 +2,27 @@ BEGIN
 DBMS_OUTPUT.PUT_LINE('mI PRIMER PROGRAMA DE PL PSQL');
 END;
 /
+11-02-2015
+  create table empleado(id integer,nombre varchar2(120),sueldo float);
+  insert into empleado values(5,'Liz',2000);
+  update empleado set id=4 where nombre ='carolina';
+  select * from empleado;
+ /
+  set serveroutput on;
+  Declare
+  NUEVO_SUELDO float;
+  begin
+  select SUELDO into NUEVO_SUELDO from empleado where id=2;
+  dbms_output.put_line('el sueldo seleccionado es '||nuevo_sueldo);
+  end;
+  /
+  
+  declare
+  cursor CURSOR_EMPLEADO IS SELECT * FROM EMPLEADO;
+  BEGIN
+  
+  FOR GATONEJO IN CURSOR_EMPLEADO LOOP
+  DBMS_OUTPUT.PUT_LINE('mENSAJITO'||GATONEJO.NOMBRE);
+  END LOOP;
+  END;
+  /
