@@ -20,8 +20,11 @@ select sec_libros.nextval into my_book_id from dual;
 insert into libros values(my_book_id, my_isbn, my_titulo, my_resumen, my_autor,my_fecha_publicacion,my_num_pag);
 end;
 /
-declare
-valor integer;
-
-begin
-DBMS_OUTPUT.PUT_LINE('SYSDATE ES:' || SYSDATE);
+SET SERVEROUTPUT ON;
+DECLARE
+id_libro INTEGER;
+BEGIN
+guardar_Libro(id_libro,'12','Narnia','ES muy buen libro','Quien sabe',
+to_date('2010/02/05','YYYY/MM/DD'),150);
+end;
+/
