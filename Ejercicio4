@@ -1,0 +1,27 @@
+create table libros  (
+    book_id          INTEGER,/*pk*/
+    isbn             VARCHAR2(13),
+    titulo           VARCHAR2(200),
+    resumen          VARCHAR2(2000),
+    autor            VARCHAR2(200),
+    fecha_publicacion DATE, /*poner publicacion*/
+    num_pag          NUMBER,
+    constraint pk_book_id primary key (book_id)
+  );
+  create sequence sec_libros
+  start with 1
+  increment by 1
+  nomaxvalue;
+  create or replace procedure guardar_Libro(my_book_id OUT integer, 
+my_isbn IN varchar2, my_titulo IN varchar2, my_resumen IN varchar2, my_autor IN varchar2,
+my_fecha_publicacion IN DATE, my_num_pag out number)
+as begin
+select sec_libros.nextval into my_book_id from dual;
+insert into libros values(my_book_id, my_isbn, my_titulo, my_resumen, my_autor,my_fecha_publicacion,my_num_pag);
+end;
+/
+declare
+valor integer;
+
+begin
+DBMS_OUTPUT.PUT_LINE('SYSDATE ES:' || SYSDATE);
