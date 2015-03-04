@@ -1,0 +1,28 @@
+create table customer(customer_id integer,name varchar2(80),phone_number varchar2(70),constraint pk_customer_id primary key (customer_id));
+create table orden(orden_id integer,customer_id integer,total float,constraint pk_orden_id primary key (orden_id),constraint fk_customer_id foreign key (customer_id)
+references customer(customer_id));
+
+create sequence sec_customer
+start with 1
+increment by 1
+nomaxvalue;
+
+create sequence sec_orden
+start with 1
+increment by 1
+nomaxvalue;
+
+create or replace procedure guardar_customer(my_customer out integer,my_name in varchar2,my_phone_number in integer)
+as 
+begin
+select sec_customer.nextval into My_customer from dual;
+insert into customer(customer_id,name,phone_number) values (my_customer,my_name,my_phone_number);
+end;
+/
+create or replace procedure guardar_orde(my_orden out integer,my_customer out intenger,my_total out float)
+as
+begin
+select sec_orden.nextval into My_customer from dual;
+insert into orden(orden_id,customer_id,total) values (my_orden,my_customer,my_total);
+end;
+/
