@@ -1,0 +1,41 @@
+Honorarios
+id_honorarios
+id_trabajador
+subtotal
+iva--no se ponen
+isr--no se ponen
+total_pagar--no se ponen
+
+
+declare
+inicio integer;
+valor integer;
+begin
+inicio:= 1500;
+for i in 1..300 loop
+aqui va el random
+guardar_trabajador(i, i)
+guardar_honorarios(i, i, inicion, null, null, null);
+inicio.= inicio+10;
+end loop;
+end;
+/
+
+Ejercicio 4; Crear un procedimineto almacenado para actualizar e imprimir un reporte con todos los datos
+aplicando las siguintes formulas.
+
+iva=subtotal*.16;
+ret_iva := iva/3;
+isr:= subtotal*.10
+
+create or replace procedura cuanto
+as
+my_iva integer;
+se declara el cursor para declarar el update
+cur cur_ex is select * from honorarios for update;
+
+begin
+for(xxx) in cur_ex loop
+my_iva:= xxx.subtotal*.16;
+update honorario set iva= xxx.my_iva, isr=my_ret_iva; -- se separa con comas cada campo para actualizar
+end loop;
