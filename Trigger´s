@@ -40,3 +40,25 @@ Tarea
 
 cuando insertemos un registro en sitio_xxx  si es menor la edad se inserta en peques  si es mayor se inserta en adultos
 y debe apareser en las otras dos tablas y con un select se ve si esta bien 
+
+
+
+
+create table sitio_xxx(id_xxx integer, edad integer);
+create table adultos(id_xxx integer, edad integer);
+create table peques(id_xxx integer,edad integer);
+create or replace trigger guardar_xxx before insert on sitio_xxx 
+for each row
+begin
+if :new.edad <18 then
+insert into peques values(:new.id_xxx,:new.edad);
+else
+insert into adultos values (:new.id_xxx,:new.edad);
+end if;
+end;
+/
+insert into sitio_xxx values(5,17);
+inser into sitio_xxx values(4,21);
+select * from sitio_xxx;
+select * from peques;
+select * from adultos;
