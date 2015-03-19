@@ -1,0 +1,32 @@
+1.-Ejercicio
+
+/*CREAR LA SIGUIENTE TABLA*/
+CREATE TABLE usuario_xxx(ID_USUARIO INTEGER,EDAD INTEGER);
+/*CREAR UN DISPARADOR QUE NO SE PUEDA INSERTAR REGISTRO MENORES DE 18 AÑOS*/
+CREATE OR REPLACE /*Disparador*/TRIGGER /*nombre del disparador*/dispardor_xxx/*tipo del disparador*/Before/*validaciones*/
+/**/insert on usuario_xxx /*para cada fila:sirve para garantizar que en cada fila se invoque el diaparador*/for Each row
+begin
+IF :NEW.edad<18 then
+RAISE_APPLICATIOB_ERROR(-20001,'LO SIENTO ERES UN PEQUEÑO PERVERTIDO');
+END IF;
+END;
+/
+
+insert into usuario_xxx values(1,16);
+select * from usuario_xxx;
+
+2.- ejercicio
+
+/*creamos la tabla*/
+CREATE TABLE trabajador(id_trabajador integer, nombre varchar2(120), sueldo float);
+/*insertar el siguiente registro*/
+insert into trabajador values(1,'Ana',4000);
+/*Crear un disparador que al hacer el update en el sueldo automáticamente sume el saldo que tenia el nuevo depósito*/
+create or replace trigger actualizar_trabajador before update on trabajador
+FOR EACH ROW
+BEGIN
+:NEW.sueldo:= :OLD.sueldo+:NEW.sueldo;
+END;
+/
+update trabajador set sueldo=4000 where id_trabajador = 1;
+select * from trabajador;
