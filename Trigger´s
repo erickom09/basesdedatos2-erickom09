@@ -30,3 +30,13 @@ END;
 /
 update trabajador set sueldo=4000 where id_trabajador = 1;
 select * from trabajador;
+
+
+
+
+Tarea
+
+
+
+cuando insertemos un registro en sitio_xxx  si es menor la edad se inserta en peques  si es mayor se inserta en adultos
+y debe apareser en las otras dos tablas y con un select se ve si esta bien 
