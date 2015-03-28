@@ -1,0 +1,6 @@
+Pasos pa invocar el procedimiento
+guardar_pelicula
+1)Agregar en la interface los componentes correspondientes a los parametros IN de tu procedimieno.
+2)Nombrar a dichos componenetes con los nombres respesctivos textoTitulo, textoSinopsis, texto etiquetaId.
+3)Crear una clase que se llame. PersistenciaPelicula y en ella agregar las 5 operaciones básicas.
+En este caso trabajamos solamente guardar_pelicula.
