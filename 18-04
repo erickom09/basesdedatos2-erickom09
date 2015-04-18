@@ -1,0 +1,10 @@
+create or replace trigger disp_sala before insert om sala for each row 
+begin
+if :NEW.numero_asientos>20 then
+raises_application_error(-20001,'No  puedes guardar más de 20 asientos')
+end if;
+if :NEW.id_sala> then
+raises_application_error(-20001,'No puedes guardar mas de 6 salas')
+end if;
+end;
+/
